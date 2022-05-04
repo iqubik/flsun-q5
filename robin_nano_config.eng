@@ -1,0 +1,354 @@
+#------------------------------------------------- ------------
+############ Basic Boot Settings #######################
+#machine type
+#0: xyz model,
+#1: corexy(x_motor = x+y, y_motor = x-y),
+#2: corexy(x_motor = x+y, y_motor = y-x),
+#3: delta models
+
+#machine type
+>DRIVE_SYSTEM			 3
+
+#Multiple language display configuration items (1: configured as multiple languages, 0: configured as font image display)
+>cfg_multiple_language		 1
+
+#Language (1: Simplified Chinese; 2: Traditional Chinese; 3: English), this configuration item is only valid when cfg_multiple_language is 0.
+>cfg_language_type		 3
+
+#Set the maximum temperature of the extrusion head display, which should not be greater than the MAXTEMP value
+>cfg_ui_set_maxtemp		 270
+
+#Set the maximum temperature of the hot plate display, which should not be greater than the HEATED_BED_MAX_TEMP value
+>cfg_ui_set_heated_bed_temp	 120
+
+#Configure the number of extrusion heads (1: single nozzle; 2: double nozzle)
+>NUM_EXTRUDER			 1
+
+#1: enable hot bed, 0: disable hot bed
+>HAVE_HEATED_BED		 1
+
+#Extrusion head thermal resistance type, 1:100k thermal; 102: MAX31855 thermocouple
+>EXT0_TEMPSENSOR_TYPE		 1
+
+#Extrusion head thermal resistance type, 1:100k thermal; 102: MAX31855 thermocouple
+>EXT1_TEMPSENSOR_TYPE		 1
+
+#heat bed thermal resistance type, 1:100k thermal;
+>HEATED_BED_SENSOR_TYPE		 1
+
+#Double X-axis setting, use the driver of the second extrusion head E1 (1: enable, 0: disable)
+>FEATURE_TWO_XSTEPPER		 0
+
+#Double Y-axis setting, use the driver of the second extrusion head E1 (1: enabled, 0: disabled)
+>FEATURE_TWO_YSTEPPER		 0
+
+#Double Z axis setting, use the driver of the second extrusion head E1 (1: enable, 0: disable)
+>FEATURE_TWO_ZSTEPPER		 0
+
+
+#Coordinates of limit switch height difference detection point
+>cfg_endstop_high_diff1:-80,-48
+>cfg_endstop_high_diff2:80,-48
+>cfg_endstop_high_diff3:0,90
+
+
+#G33 command delta model leveling radius range
+>cfg_G33_delta_radius		 86
+
+#arm length correction command
+>cmd_delta_crazy:M665 X-1;M665 Y-1;M665 Z-1;
+>cmd_delta_normal:M665 X1;M665 Y1;M665 Z1;
+
+
+#------------------------------------------------- ------------
+############ Function Settings #######################
+
+#E1 offset from the origin of X axis (mm)
+>EXT1_X_OFFSET			 0
+
+#E1 offset from the origin of the Y axis (mm)
+>EXT1_Y_OFFSET			 0
+
+>INVERT_X_DIR			 0 #X stepper motor direction
+>INVERT_Y_DIR			 0 #Y stepper motor direction
+>INVERT_Z_DIR			 0 #Z stepper motor direction
+>EXT0_INVERSE			 0 #E0 Stepper motor direction
+>EXT1_INVERSE			 1 #E1 stepper motor direction
+
+#X pulse value per mm, such as delta model, XYZ pulse value is set to the same
+>XAXIS_STEPS_PER_MM		 80
+
+#Y pulse value per mm, such as the delta model, the XYZ pulse value is set to the same
+>YAXIS_STEPS_PER_MM		 80
+
+#Z pulse value per mm, such as the delta model, the XYZ pulse value is set to the same
+>ZAXIS_STEPS_PER_MM		 80
+
+>EXT0_STEPS_PER_MM		 436.905 #E0 pulse value per mm
+>EXT1_STEPS_PER_MM		 436.905 #E1 pulse value per mm
+
+>X_MAX_LENGTH			 105 #X maximum travel
+>Y_MAX_LENGTH			 105 #Y maximum travel
+>Z_MAX_LENGTH			 210 #Z maximum travel
+>X_MIN_POS			 -105 #X minimum stroke
+>Y_MIN_POS			 -105 #Y minimum stroke
+>Z_MIN_POS			 0 #Z minimum stroke
+
+#The minimum temperature of the extrusion head of the main board, which plays a protective role
+>MIN_EXTRUDER_TEMP		 175
+
+#The maximum temperature of the extrusion head of the main board, which plays a protective role
+>MAX_EXTRUDER_TEMP		 270
+
+#The maximum temperature of the motherboard hot plate, for protection
+>MAX_HEATED_BED_TEMP		 120
+
+>HOMING_ORDER			 1 #Home order (1:XYZ;2:XZY;3:YXZ;4:YZX;5:ZXY;6:ZYX)
+
+#Direction when returning to zero (-1: minimum direction, 1: maximum direction)
+>X_HOME_DIR			 1
+>Y_HOME_DIR			 1
+>Z_HOME_DIR			 1
+
+>HOMING_FEEDRATE_X		 30 #X zero return speed when returning to zero
+>HOMING_FEEDRATE_Y		 30 #Y zero return speed
+>HOMING_FEEDRATE_Z		 30 #Z zero return speed
+
+>ENDSTOP_X_MIN_INVERTING 1 #X-axis minimum limit normally open/normally closed
+>ENDSTOP_Y_MIN_INVERTING 1 #Y-axis minimum limit normally open/normally closed
+>ENDSTOP_Z_MIN_INVERTING 1 #Z axis minimum limit normally open/normally closed
+>ENDSTOP_X_MAX_INVERTING 0 #X-axis maximum limit normally open/normally closed
+>ENDSTOP_Y_MAX_INVERTING 0 #Y-axis maximum limit normally open/normally closed
+>ENDSTOP_Z_MAX_INVERTING 0 #Z axis maximum limit normally open/normally closed
+
+>MIN_HARDWARE_ENDSTOP_X 0 #Enable the minimum limit of X axis
+>MIN_HARDWARE_ENDSTOP_Y 0 #Enable the Y-axis minimum limit
+>MIN_HARDWARE_ENDSTOP_Z 0 #Enable Z-axis minimum limit
+>MAX_HARDWARE_ENDSTOP_X 1 #Enable the maximum limit of X axis
+>MAX_HARDWARE_ENDSTOP_Y 1 #Enable the maximum limit of the Y axis
+>MAX_HARDWARE_ENDSTOP_Z 1 #Enable Z-axis maximum limit
+
+>min_software_endstop_x 0 #Enable the minimum software limit of X axis
+>min_software_endstop_y 0 #Enable the minimum software limit of Y axis
+>min_software_endstop_z 0 #Enable the minimum software limit of Z axis
+>max_software_endstop_x 1 #Enable the maximum software limit of X axis
+>max_software_endstop_y 1 #Enable the maximum software limit of the Y axis
+>max_software_endstop_z 1 #Enable the maximum software limit of Z axis
+
+>MAX_FEEDRATE_X		 200 #X maximum speed of movement mm/s
+>MAX_FEEDRATE_Y		 200 #The maximum speed of Y movement mm/s
+>MAX_FEEDRATE_Z		 200 #Maximum speed of Z movement mm/s
+>MAX_FEEDRATE_EXT0	 200 #E0 The maximum speed of the extruder mm/s
+>MAX_FEEDRATE_EXT1	 200 #E1 max speed of extruder mm/s
+
+#Maximum printing acceleration in AXIS direction mm/s^2
+>MAX_ACCELERATION_UNITS_PER_SQ_SECOND_X 1000
+>MAX_ACCELERATION_UNITS_PER_SQ_SECOND_Y 1000
+>MAX_ACCELERATION_UNITS_PER_SQ_SECOND_Z 1000
+
+>MAX_ACCELERATION_EXT0 1000 #E0 The maximum printing acceleration of the extruder mm/s^2
+>MAX_ACCELERATION_EXT1 1000 #E1 The maximum printing acceleration of the extruder mm/s^2
+
+#AXIS movement maximum acceleration mm/s^2
+>MAX_TRAVEL_ACCELERATION_UNITS_PER_SQ_SECOND_X 1000
+>MAX_TRAVEL_ACCELERATION_UNITS_PER_SQ_SECOND_Y 1000
+>MAX_TRAVEL_ACCELERATION_UNITS_PER_SQ_SECOND_Z 1000
+
+#drive current
+>CURRENT_VREF_XY	 1000 #Default motor current for XY in mA, range (0~1000)
+>CURRENT_VREF_Z		 1000 #Default motor current for Z in mA, range (0~1000)
+>CURRENT_VREF_E		 1000 #Default motor current for E in mA, range (0~1000)
+
+#Access the power failure detection module (1:mks 220det;0:mks pwc)
+>cfg_insert_det_module			 0
+
+#Whether the machine is equipped with UPS power supply (1: yes; 0: no)
+>cfg_have_ups_device			 0
+
+#Complete the shutdown configuration (1: open; 0: close). It needs to be used with the "shutdown module"
+>cfg_print_over_auto_close		 0
+
+# Trigger level configuration of material break detection interface (1: high level trigger; 0: low level trigger)
+>cfg_filament_det_trigger_level		 0
+
+>cfg_filament_load_length	 600 #The length of the "refill" feed
+>cfg_filament_load_speed	 800 #"Change material" feed speed configuration (mm/min)
+
+#"Refueling" feed minimum limit temperature configuration
+>cfg_filament_load_limit_temperature 190
+
+>cfg_filament_unload_length	 600 #The length of the unloaded material of "renew"
+>cfg_filament_unload_speed	 800 # "Return" unload speed configuration (mm/min)
+
+#Configuration of the minimum limit temperature for "refueling" unloading
+>cfg_filament_unload_limit_temperature 190
+
+#leveling mode configuration
+>cfg_leveling_mode	 1 #1: automatic leveling; 0: manual leveling
+
+#manual leveling
+>cfg_point_number	 5 #Number of manual leveling: (3,4,5 points can be set)
+
+#Position coordinates of 5 points when manually leveled
+>cfg_point1:50,50
+>cfg_point2:180,50
+>cfg_point3:180,180
+>cfg_point4:50,180
+>cfg_point5:150,150
+
+
+#delta parameters
+>DELTA_MAX_RADIUS		 105 #delta circle radius
+
+#The distance from the center of the printer to the vertical support rod
+>PRINTER_RADIUS			 180.8
+
+>DELTA_DIAGONAL_ROD		 215 #Delta rod length
+>DELTA_FLOOR_SAFETY_MARGIN_MM	 15 #Leveling the border safety distance
+
+>END_EFFECTOR_HORIZONTAL_OFFSET	 40 #
+>CARRIAGE_HORIZONTAL_OFFSET	 14.5 #
+>ROD_RADIUS			 106.7 #
+
+#Auto leveling button command configuration
+>cfg_auto_leveling_cmd:M104 S0;G28;M206 T1 P893 S100;M206 T1 P895 S100;M206 T1 P897 S100;G333;G28;M500;G32 S2;G33;M500;G28;
+
+>FEATURE_Z_PROBE	 1 #Leveling enable, 0: disable, 1: enable
+
+#Leveling method, 0: 3-point leveling, 1: multi-point leveling, 2: 4-point leveling
+>BED_LEVELING_METHOD	 0
+
+#Probe signal (0: active low, normally open; 1: active high, normally closed)
+>Z_PROBE_ON_HIGH	 0
+
+>Z_PROBE_HEIGHT		 18 #The height difference between the probe and the nozzle
+>Z_PROBE_X1		 -80 #The preset probe point coordinate X1
+>Z_PROBE_Y1		 -48 #The preset probe point coordinate Y1
+>Z_PROBE_X2		 80 #The preset probe point coordinate X2
+>Z_PROBE_Y2		 -48 #The preset probe point coordinate Y2
+>Z_PROBE_X3		 0 #The preset probe point coordinate X3
+>Z_PROBE_Y3		 85 #The preset probe point coordinate Y3
+
+>cfg_leveling_z_speed	 1800 #Leveling movement Z speed configuration (mm/min)
+>cfg_leveling_xy_speed	 1800 #Leveling movement XY speed configuration (mm/min)
+
+>BED_LEVELING_GRID_SIZE	 5 #leveling interval
+>Z_PROBE_SPEED		 2 #Z axis probe speed
+>Z_PROBE_XY_SPEED	 30 #XY speed
+
+>STEPPER_HIGH_DELAY	 0 #Pulse hold time configuration (unit: us)
+
+
+#For Inverting Stepper Enable Pins
+>X_ENABLE_ON	 0
+>Y_ENABLE_ON	 0
+>Z_ENABLE_ON	 0
+>EXT0_ENABLE_ON	 0
+>EXT1_ENABLE_ON	 0
+
+#Extrusion head heating control type.
+#- 0 = Simply switch on/off if temperature is reached.
+#- 1 = PID Temperature control.
+#- 3 = Dead-time control.
+
+>EXT0_HEAT_MANAGER 1
+>EXT1_HEAT_MANAGER 1
+
+#Extrusion head PID settings
+>EXT0_PID_INTEGRAL_DRIVE_MAX	 230 #PID integral saturation maximum value
+>EXT0_PID_INTEGRAL_DRIVE_MIN	 40 #PID integral saturation minimum value
+>EXT0_PID_P			 24 #P value setting
+>EXT0_PID_I			 0.88 #I value setting
+>EXT0_PID_D			 80 #D value setting
+
+>EXT1_PID_INTEGRAL_DRIVE_MAX	 230 #PID integral saturation maximum value
+>EXT1_PID_INTEGRAL_DRIVE_MIN	 40 #PID integral saturation minimum value
+>EXT1_PID_P			 24 #P value setting
+>EXT1_PID_I			 0.88 #I value setting
+>EXT1_PID_D			 80 #D value setting
+
+
+
+#------------------------------------------------- ------------
+############ Function customization ######################
+
+#Set interface custom functions 1 and 2
+>setmenu_func1_display 1 #1: show button, 0: don't show button
+>setmenu_func2_display 1 #1: Display button, 0: Don't display button
+
+#Each instruction must be separated by a semicolon ";"
+>setmenu_func1:M84;
+>setmenu_func2:M81;
+
+>moreitem_pic_cnt 7 #Number of "more" buttons
+#Button1~Button7 custom command
+#Each instruction must be separated by a semicolon ";"
+#The maximum size of each button setting command must be less than 200 bytes
+>moreitem_button1_cmd:M665 D-0.3;M500;
+>moreitem_button2_cmd:M665 D0.3;M500;
+>moreitem_button3_cmd:M665 R0.3;M500;
+>moreitem_button4_cmd:M665 R-0.3;M500;
+>moreitem_button5_cmd:G28 X0;G28 Y0;G28 Z0;
+>moreitem_button6_cmd:G28 X0;G28 Y0;G28 Z0;
+>moreitem_button7_cmd:G28 X0;G28 Y0;G28 Z0;
+
+#Print the number of "more" buttons in the interface
+>morefunc_cnt 6
+
+#Button 1~Button 6 function configuration
+>morefunc1_cmd:M665 I0.1;
+>morefunc2_cmd:M665 I-0.1;
+>morefunc3_cmd:G28;
+>morefunc4_cmd:G28;
+>morefunc5_cmd:G28;
+>morefunc6_cmd:G28;
+
+#------------------------------------------------- ------------
+###### Display effect customization #######
+
+>cfg_background_color			 0x000000 #Screen background color
+>cfg_title_color			 0xFFFFFF #title text
+
+#Temperature and other state background color
+>cfg_state_background_color		 0x000000
+
+>cfg_state_text_color			 0xFFFFFF #Temperature and other state text color
+
+#The background color of the file name font on the file button
+>cfg_filename_background_color		 0x000000
+
+#The color of the file name font on the file button
+>cfg_filename_color			 0xFFFFFF
+
+#Printing status information font background color
+>cfg_printingstat_word_background_color	 0x000000
+>cfg_printingstat_word_color		 0xFFFFFF #Printing status information font color
+>cfg_BUTTON_3D_effects			 0 #Button 3D effects (0: no, 1: yes)
+
+#------------------------------------------------- ------------
+#One-key preheating to set the temperature of the extrusion head
+>cfg_set_pla_nozzle_temp	 200
+
+#One-key preheat to set the temperature of the hot bed
+>cfg_set_pla_bed_temp		 100
+
+#------------------------------------------------- -------------
+#version information configuration
+>message_version:VERSION:2.5.2ENG
+>message_board:BOARD: MKS ROBIN_NANO
+>message_type:TYPE: FLSUN Q5
+
+#------------------------------------------------- -------------
+#wake mode configuration
+>cfg_Standby_mode	 0 #Whether the wake-up function is enabled (0: off, 1: on)
+>cfg_Standby_gap_time	 600 #Set the sleep time (unit: seconds)
+#------------------------------------------------- -------------
+
+#The screen is flipped 180° (0: not flipped, 0xEE: flipped)
+>cfg_screen_overturn_180:0xEE
+
+#Enable screen flip 180 degree configuration
+>cfg_screen_overturn_180 1 #Whether to enable the screen overturn function (0: off, 1: on)
+
+#enable wifi configuration
+>cfg_enble_wifi		 1 #Whether to enable the wifi function (0: off, 1: on)
